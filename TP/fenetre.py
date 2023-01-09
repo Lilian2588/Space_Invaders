@@ -13,8 +13,27 @@ from tkinter import Tk, Button, Canvas, PhotoImage
 import math
 from Vaisseau import vaisseau
 from Alien import alien
-from tir_vaisseau import missile_vaisseau
+'''
+def newgame():
+    Mafenetre.destroy()
+    afficher()
 
+def afficher():
+    Mafenetre = Tk()
+    bg = PhotoImage(file = "Images\\universe.png") 
+    Mafenetre['bg'] = 'grey'
+    Mafenetre.title('Space Invader')
+    Canevas = Canvas(Mafenetre, height = 460,  width= 640)
+    Canevas.pack()
+    Canevas_Image = Canevas.create_image(0, 0, image = bg, anchor = "nw")
+    Buttonstart = Button(Mafenetre,text = "quit", command = Mafenetre.destroy)
+    Buttonstart.pack(side = "right", padx = 10, pady = 10)
+    Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
+    Boutonquit.pack(side = "right", padx = 10, pady = 10)
+
+'''
+       
+        
 Mafenetre = Tk()
 bg = PhotoImage(file = "Images\\universe.png") 
 Mafenetre['bg'] = 'grey'
@@ -24,8 +43,11 @@ Canevas.pack()
 Canevas_Image = Canevas.create_image(0, 0, image = bg, anchor = "nw")
 Buttonstart = Button(Mafenetre,text = "quit", command = Mafenetre.destroy)
 Buttonstart.pack(side = "right", padx = 10, pady = 10)
-Boutonquit = Button(Mafenetre, text =  'New Game', command = Canevas.destroy)
-Boutonquit.pack(side = "right", padx = 10, pady = 10)
+#Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
+#Boutonquit.pack(side = "right", padx = 10, pady = 10)
+
+
+
 
 #Dimensions du canvas
 LARGEUR = 640 
@@ -120,4 +142,4 @@ def Clavier(event) :
 #On attribut les touches du clavier
 Canevas.bind('<Key>', Clavier)  
 
-Mafenetre.mainloop()
+Mafenetre.mainloop()de
