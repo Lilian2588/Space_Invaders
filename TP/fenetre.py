@@ -142,4 +142,4 @@ def Clavier(event) :
 #On attribut les touches du clavier
 Canevas.bind('<Key>', Clavier)  
 
-Mafenetre.mainloop()de
+Mafenetre.mainloop()
