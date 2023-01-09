@@ -12,9 +12,7 @@ import math
 from Vaisseau import vaisseau
 from Alien import alien
 
-def newgame():
-    Mafenetre.destroy()
-    afficher()
+
 def afficher():
     Mafenetre = Tk()
     bg = PhotoImage(file = "Images\\universe.png") 
@@ -27,7 +25,9 @@ def afficher():
     Buttonstart.pack(side = "right", padx = 10, pady = 10)
     Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
     Boutonquit.pack(side = "right", padx = 10, pady = 10)
-    
+def newgame():
+    Mafenetre.destroy()
+    afficher()    
        
         
 Mafenetre = Tk()
