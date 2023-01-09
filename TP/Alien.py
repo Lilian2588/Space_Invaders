@@ -22,14 +22,12 @@ class alien :
     def afficher(self, Canevas) :
         if self.apparence == 'alien' :
             photo = PhotoImage(file = "Images\\alien.png")
-            Canevas.create_image(20,20, image = photo)
+            return Canevas.create_image(20, 20, image = photo)
         if self.apparence == 'oval' :
-            Canevas.create_oval(self.x - 15, self.y - 15 , self.x + 15, self.y + 15, width = self.taille, outline = 'black', fill = 'red')
-        return self.apparence
+           return Canevas.create_oval(self.x - 15, self.y - 15 , self.x + 15, self.y + 15, width = self.taille, outline = 'black', fill = 'red') 
     
-    def shift(self, Canevas, Mafenetre) :
+    def shift(self, RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, forme) :
         """Déplacement des aliens""" 
-        global RAYON, DX, DY, LARGEUR, affich_alien
         #Gestion des collisions 
         #aller-retour à droite
         if self.x + RAYON + DX > LARGEUR : 
@@ -44,6 +42,6 @@ class alien :
         self.x = self.x + DX
         self.y = self.y + DY
         #Actualisation des coordonnées de l'alien
-        Canevas.coords(self.apparence, self.x - RAYON, self.y - RAYON, self.x + RAYON, self.y + RAYON)
-        Mafenetre.after(25, self.shift)
+        Canevas.coords(forme, self.x - RAYON, self.y - RAYON, self.x + RAYON, self.y + RAYON)
+        Mafenetre.after(25, lambda : self.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, forme))
     

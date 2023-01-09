@@ -8,10 +8,12 @@
 
 """
 
+
 from tkinter import Tk, Button, Canvas, PhotoImage
 import math
 from Vaisseau import vaisseau
 from Alien import alien
+from tir_vaisseau import missile_vaisseau
 
 Mafenetre = Tk()
 bg = PhotoImage(file = "Images\\universe.png") 
@@ -50,15 +52,15 @@ PosY = 370
 
 Canevas.focus_set()
 #Création de l'entité du vaisseau et affichage de sa forme 
-Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'vessel')
+Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'oval')
 affich_vaisseau = Vaisseau.affichage(Canevas) 
 
-'''
+
 #Création des aliens et affichages de leur formes
 Alien = alien(vitesse, X, Y, 1, 'oval')
 affich_alien = Alien.afficher(Canevas)
-#Alien.shift(Canevas, Mafenetre)
-'''
+Alien.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
+
 '''
 #Tir des Aliens
 class missile_alien :
@@ -78,34 +80,8 @@ class missile_alien :
     def touche_vaisseau(self) : 
         vaisseau.vie_perdu
 
-#Tir du vaisseau
-class missile_vaisseau:
-    def __init__(self, x, y, apparence):
-        self.x = x
-        self.y = y
-        self.apparence = apparence
-        #Canevas.create_line(self.x , self.y-4 , self.x ,self.y , opacity = "1", fill='white')
-      
-    def afficher(self):
-        Canevas.coords(self.apparence , self.x , self.y-4 , self.x , self.y)
-
-    def deplacement(self):
-        self.y -= 5
-        self.afficher()
-        Mafenetre.after(20, self.deplacement)
-        
-    def destruction(self):
-        points = 0
-        if self.y < 0:
-            Canevas.delete(self.apparence)
-        else:
-            if self.y >= alien.y and self.y <= alien.x + 30 and self.x <= alien.x + 30 and self.x >= alien.x :
-                Canevas.delete(self.apparence)
-                Canevas.delete(alien)
-                points += 1
 
 '''
-
 """
 block1 = Canevas.create_rectangle(random(100,400), random(100,400), random(100,400), random(100,400), width= 1, outline = 'blue', fill= 'green')
 block2 = Canevas.create_rectangle(random(100,400), random(100,400), random(100,400), random(100,400), width= 2, outline = 'blue', fill= 'green')

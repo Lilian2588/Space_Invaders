@@ -25,8 +25,13 @@ class vaisseau:
         if self.apparence == 'rectangle' : 
             return Canevas.create_rectangle(self.PosX, self.PosY, self.PosX -10, self.PosY -10, fill = 'blue', width = 3, outline = 'black')
         if self.apparence == 'vessel' : 
-            photo = PhotoImage(file = "Images\\space_vessel.png")
+            photo = PhotoImage(file = "Images\\r_space_vessel.png")
             return Canevas.create_image(20, 20, image = photo)
     
-    def vie_perdu(self) : 
+    def vie_perdu(self) :
+        ''' 
+        if 
+        '''
         self.vie -= 1
+    
+        
