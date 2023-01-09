@@ -27,7 +27,7 @@ def afficher():
     Buttonstart.pack(side = "right", padx = 10, pady = 10)
     Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
     Boutonquit.pack(side = "right", padx = 10, pady = 10)
-    Mafenetre.mainloop()
+    
        
         
 Mafenetre = Tk()
@@ -41,7 +41,7 @@ Buttonstart = Button(Mafenetre,text = "quit", command = Mafenetre.destroy)
 Buttonstart.pack(side = "right", padx = 10, pady = 10)
 Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
 Boutonquit.pack(side = "right", padx = 10, pady = 10)
-Mafenetre.mainloop()
+
 
 
 
