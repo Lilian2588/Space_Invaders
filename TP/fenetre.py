@@ -1,18 +1,18 @@
 """
-    TP4
+    TP SpaceInvaders
     Crée Le 05/12/2022
     Réalisé par Glemet Augustin et Saglibene Lilian 
     Objectif : - créer le canvas 
                - implémentation des types de données
-    modifié le 08/01/23
-
 """
 
-
+#Librairies et fonctions importées
 from tkinter import Tk, Button, Canvas, PhotoImage
 import math
 from Vaisseau import vaisseau
 from Alien import alien
+from tir_vaisseau import missile_vaisseau
+
 '''
 def newgame():
     Mafenetre.destroy()
@@ -33,21 +33,25 @@ def afficher():
 
 '''
        
-        
 Mafenetre = Tk()
+#Image de fond 
 bg = PhotoImage(file = "Images\\universe.png") 
+#Background de la fenêtre principale  
 Mafenetre['bg'] = 'grey'
+#titre de la fenêtre 
 Mafenetre.title('Space Invader')
+#Création du canevas 
 Canevas = Canvas(Mafenetre, height = 460,  width= 640)
+#Implémentation du canevas
 Canevas.pack()
 Canevas_Image = Canevas.create_image(0, 0, image = bg, anchor = "nw")
+#Fonctionnalités de la fenêtre 
 Buttonstart = Button(Mafenetre,text = "quit", command = Mafenetre.destroy)
 Buttonstart.pack(side = "right", padx = 10, pady = 10)
-#Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
-#Boutonquit.pack(side = "right", padx = 10, pady = 10)
-
-
-
+'''
+Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
+Boutonquit.pack(side = "right", padx = 10, pady = 10)
+'''
 
 #Dimensions du canvas
 LARGEUR = 640 
@@ -68,20 +72,28 @@ angle = - math.pi
 DX = vitesse*math.cos(angle)
 DY = vitesse*math.sin(angle)
 
-#Position initiale du vaisseau
+#Position initiale du vaisseau  
 PosX = LARGEUR/2
 PosY = 370
 
 Canevas.focus_set()
+
 #Création de l'entité du vaisseau et affichage de sa forme 
 Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'oval')
 affich_vaisseau = Vaisseau.affichage(Canevas) 
 
-
 #Création des aliens et affichages de leur formes
 Alien = alien(vitesse, X, Y, 1, 'oval')
+#Apparence de l'alien
 affich_alien = Alien.afficher(Canevas)
+#appelle de la méthode pour qui se déplace
 Alien.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
+print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
+
+
+
+
+
 
 '''
 #Tir des Aliens
@@ -113,7 +125,7 @@ block3 = Canevas.create_rectangle(random(100,400), random(100,400), random(100,4
 #Fonction de binding des touches 
 def Clavier(event) : 
     #Création des postions du vaiseau    
-    global PosX, PosY, LARGEUR, HAUTEUR
+    global PosX, PosY, X, Y, RAYON, LARGEUR, HAUTEUR, Mafenetre, Canevas, affich_alien
     touche = event.keysym
     #On délimite la fenêtre par la Largeur ainsi défini au début - nombre de pixel auquel se déplace le vaisseau pour que le vaisseau ne déborde pas du canvas
     if PosX > 20 and PosX < LARGEUR - 20 : 
@@ -132,14 +144,16 @@ def Clavier(event) :
     if PosX == 20 :
         if touche == 'd' or touche == 'Right' : 
             PosX += 20
-    '''
-    if touche == 'Backspace' : 
-        #tir_missile_vaisseau()
-    '''
+    #Touche espace qui active le tir du vaisseau
+    if touche == 'space' :
+        #Création du missile et de sa forme 
+        missile = missile_vaisseau(PosX, PosY, 3)
+        forme_missile = missile.afficher(Canevas)
+        missile.deplacement(forme_missile, affich_alien, Canevas, Mafenetre, X, Y, RAYON)
     #Mise a jour des coordonnées du vaisseau 
     Canevas.coords(affich_vaisseau, PosX -10, PosY -10, PosX +10, PosY +10)
 
-#On attribut les touches du clavier
-Canevas.bind('<Key>', Clavier)  
+#On lie le clavier à la fonction 
+Canevas.bind('<Key>',  Clavier)  
 
 Mafenetre.mainloop()
