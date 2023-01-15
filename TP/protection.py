@@ -1,5 +1,5 @@
 from Vaisseau import vaisseau
-largeur = 10
+largeur = 40
 hauteur = 15
 
 class Protections:
