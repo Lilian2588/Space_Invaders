@@ -36,6 +36,11 @@ def afficher():
 
 '''
        
+
+#Dimensions du canvas
+LARGEUR = 640    
+HAUTEUR = 460
+
 Mafenetre = Tk()
 #Image de fond 
 bg = PhotoImage(file = "Images\\universe.png") 
@@ -43,22 +48,25 @@ bg = PhotoImage(file = "Images\\universe.png")
 Mafenetre['bg'] = 'grey'
 #titre de la fenêtre 
 Mafenetre.title('Space Invader')
+Mafenetre.geometry('1000x600+1000+200')
 #Création du canevas 
-Canevas = Canvas(Mafenetre, height = 460,  width= 640)
-#Implémentation du canevas
+Canevas = Canvas(Mafenetre,   height = HAUTEUR,  width= LARGEUR)
+#Implémentation du canevas  
 Canevas.pack()
 Canevas_Image = Canevas.create_image(0, 0, image = bg, anchor = "nw")
 #Fonctionnalités de la fenêtre 
-Buttonstart = Button(Mafenetre,text = "quit", command = Mafenetre.destroy)
-Buttonstart.pack(side = "right", padx = 10, pady = 10)
+Exit = Button(Mafenetre,text = "quit", relief = 'raised', command = Mafenetre.destroy)
+Exit.pack(side = "right", padx = 10, pady = 10)
+
+Menu = Label(Mafenetre, relief = 'ridge', text='Menu')
+Menu.pack(side = 'top', padx = 20, pady = 20)
+
 '''
 Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
 Boutonquit.pack(side = "right", padx = 10, pady = 10)
 '''
 
-#Dimensions du canvas
-LARGEUR = 640 
-HAUTEUR = 460
+
 #Rayon utilisé pour la taille du vaisseau
 RAYON = 15
 
@@ -164,16 +172,16 @@ def Clavier(event) :
 
 #On lie le clavier à la fonction 
 Canevas.bind('<Key>',  Clavier)  
-# fonction permetant 
+#Fonction permetant 
 def Points(pts):
     global Score
     Score+=pts
     score.config(text='Score: '+str(Score))
 
-score=Label(Mafenetre,text='Score: 0')
+score=Label(Mafenetre, relief = 'flat', text='Score: 0')
 score.pack(side='bottom',padx=10,pady=10)
 def AffichageVies(vie):
     nbvies.config(text='Vies: '+str(vie))
-nbvies=Label(Mafenetre,text="Vies: 3")
+nbvies=Label(Mafenetre, relief = 'flat', text="Vies: 3")
 nbvies.pack(side='bottom',padx=10,pady=10)
 Mafenetre.mainloop()

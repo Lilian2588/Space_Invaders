@@ -33,9 +33,11 @@ class alien :
             Renvoie l'apparence de l'alien en lui même et sa hitbox qui est le segment inférieur 
         '''
         if self.apparence == 'alien' :
+            #apparence d'alien, on importe une image d'alien
             photo = PhotoImage(file = "Images\\alien.png")
             return Canevas.create_image(20, 20, image = photo)
         if self.apparence == 'oval' :
+           #apparence d'oval, l'alien ressemble à un cercle
            alien =  Canevas.create_oval(self.x - 15, self.y - 15 , self.x + 15, self.y + 15, width = self.taille, outline = 'black', fill = 'red')
            return alien 
         '''
@@ -46,19 +48,23 @@ class alien :
         """Déplacement des aliens""" 
         #Gestion des collisions 
         #aller-retour à droite
-        if self.x + RAYON + DX > LARGEUR : 
+        if self.x + RAYON + DX > LARGEUR :
+            #Ligne de code pour gérer la collision du bord droit de l'oval avec le bord de la fenêtre
             self.x = 2*(LARGEUR - RAYON) - self.x
+            #le petit déplacement DX change de direction en changeant de signe
             DX = - DX
 
         #Aller-retour à gauche
-        if self.x - RAYON + DX < 0 : 
-            self.x = 2*RAYON - self.x 
+        if self.x - RAYON + DX < 0 :
+            #Ligne de code pour gérer la collision du bord gauche de l'oval avec le bord de la fenêtre
+            self.x = 2*RAYON - self.x
+            #le petit déplacement DX change de direction en changeant de signe
             DX = - DX
-        
+        #On ajoute les petits déplacements à leur position
         self.x = self.x + DX
-        self.y = self.y + DY
         #Actualisation des coordonnées de l'alien
         Canevas.coords(forme, self.x - RAYON, self.y - RAYON, self.x + RAYON, self.y + RAYON)
+        #On rappelle la fonction toutes les les 25ms pour que l'alien bouge constamment
         Mafenetre.after(25, lambda : self.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, forme))
     
     def actualiser_pos(self, RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, forme) :
