@@ -91,12 +91,18 @@ Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'oval')
 affich_vaisseau = Vaisseau.affichage(Canevas) 
 
 #Création des aliens et affichages de leur formes
-Alien = alien(vitesse, X, Y, 1, 'oval')
-#Apparence de l'alien
-affich_alien = Alien.afficher(Canevas)
+nbrealien = 10
+mechant=[]
+for i in range(nbrealien):
+    Alien=(alien(vitesse,Y, 1,nbrealien, 'oval'))
+    #Apparence de l'alien
+    mechant.append(Alien)
+    #affich_alien = Alien.afficher(Canevas)
+for i in mechant:
+    affich_alien=i.afficher(Canevas)
 #appelle de la méthode pour qui se déplace
-Alien.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
-print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
+    i.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
+    print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
 # initialisation du score et points
 Score=0
 PointsAlien=30
