@@ -1,8 +1,9 @@
 from Vaisseau import vaisseau
 largeur = 10
 hauteur = 15
-pos = 0
+
 class Protections:
+    pos = 0
     def __init__(self,width,nbre_protections,posYprotections,resistance):
         Protections.pos += 1
         self.pos = Protections.pos
