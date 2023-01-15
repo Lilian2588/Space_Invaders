@@ -94,9 +94,9 @@ print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_al
 # initialisation du score et points
 Score=0
 PointsAlien=30
-
-
-
+# on initialise le nombre de vies
+alien.vie = 3
+vie = alien.vie
 
 '''
 #Tir des Aliens
@@ -166,6 +166,8 @@ def Points(pts):
 
 score=Label(Mafenetre,text='Score: 0')
 score.pack(side='bottom',padx=10,pady=10)
-
-
+def AffichageVies(vie):
+    nbvies.config(text='Vies: '+str(vie))
+nbvies=Label(Mafenetre,text="Vies: 3")
+nbvies.pack(side='bottom',padx=10,pady=10)
 Mafenetre.mainloop()

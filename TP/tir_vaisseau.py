@@ -37,6 +37,8 @@ class missile_vaisseau:
         suppression_items(forme_missile, affich_alien, self.x, self.y, 3, posx_alien, posy_alien, taille_alien, Canevas)
         print(posx_alien)
         print(posy_alien)
+        # permet d'ajouter des points lors de la destruction d'un alien
+        Points(PointsAlien)
         '''
         #On rappelle la fonction après une certaine durée qui dépend de la vitesse du missile
         Mafenetre.after(self.vitesse*10, lambda : self.deplacement(forme_missile, affich_alien, Canevas, Mafenetre, posx_alien, posy_alien, taille_alien))
