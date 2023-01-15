@@ -7,14 +7,18 @@
 """
 
 #Librairies et fonctions importées
-from tkinter import Tk, Button, Canvas, PhotoImage
+from tkinter import Tk, Button, Canvas, PhotoImage,Label
 import math
 from Vaisseau import vaisseau
 from Alien import alien
 from tir_vaisseau import missile_vaisseau
 
-'''
 
+
+'''
+def newgame():
+    Mafenetre.destroy()
+    afficher()
 
 def afficher():
     Mafenetre = Tk()
@@ -28,7 +32,8 @@ def afficher():
     Buttonstart.pack(side = "right", padx = 10, pady = 10)
     Boutonquit = Button(Mafenetre, text =  'New Game', command = newgame)
     Boutonquit.pack(side = "right", padx = 10, pady = 10)
-    
+
+'''
        
 Mafenetre = Tk()
 #Image de fond 
@@ -86,8 +91,9 @@ affich_alien = Alien.afficher(Canevas)
 #appelle de la méthode pour qui se déplace
 Alien.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
 print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
-
-
+# initialisation du score et points
+Score=0
+PointsAlien=30
 
 
 
@@ -152,5 +158,14 @@ def Clavier(event) :
 
 #On lie le clavier à la fonction 
 Canevas.bind('<Key>',  Clavier)  
+# fonction permetant 
+def Points(pts):
+    global Score
+    Score+=pts
+    score.config(text='Score: '+str(Score))
+
+score=Label(Mafenetre,text='Score: 0')
+score.pack(side='bottom',padx=10,pady=10)
+
 
 Mafenetre.mainloop()
