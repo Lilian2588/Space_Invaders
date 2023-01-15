@@ -81,7 +81,8 @@ PosY = 370
 
 Canevas.focus_set()
 #Création des protections
-nbre_protections=4
+nbre_protections = 4
+# boucle qui permet d'afficher les 4 protections 
 for i in range(nbre_protections):
     Protection = Protections(LARGEUR,nbre_protections,PosY-35,5)
     affich_protection = Protection.affichage(Canevas) 
