@@ -12,6 +12,7 @@ import math
 from Vaisseau import vaisseau
 from Alien import alien
 from tir_vaisseau import missile_vaisseau
+from protection import Protections
 
 
 
@@ -79,7 +80,9 @@ PosX = LARGEUR/2
 PosY = 370
 
 Canevas.focus_set()
-
+#Création des protéctions
+Protection = Protections(Canevas.width,3,PosY-35,5)
+affich_protection = Protection.affichage(Canevas) 
 #Création de l'entité du vaisseau et affichage de sa forme 
 Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'oval')
 affich_vaisseau = Vaisseau.affichage(Canevas) 
