@@ -99,10 +99,10 @@ for i in range(nbrealien):
     mechant.append(Alien)
     #affich_alien = Alien.afficher(Canevas)
 for i in mechant:
-    affich_alien=i.afficher(Canevas)
+    affich_alien = i.afficher(Canevas)
 #appelle de la méthode pour qui se déplace
     i.shift(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien)
-    print(Alien.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
+    print(i.actualiser_pos(RAYON, DX, DY, LARGEUR, Canevas, Mafenetre, affich_alien))
 # initialisation du score et points
 Score=0
 PointsAlien=30
