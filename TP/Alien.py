@@ -13,9 +13,12 @@ from tkinter import PhotoImage
 #Alien
 class alien : 
     #Constructeur
-    def __init__(self, vitesse, x, y, taille, apparence) :
+    compteur = 0
+    def __init__(self, vitesse, y, taille,ecart, apparence) :
+        alien.compteur += 1
+        self.compteur = alien.compteur
         self.vitesse = vitesse
-        self.x = x
+        self.x = self.compteur*(ecart + taille)
         self.y = y
         self.taille = taille 
         self.apparence = apparence
