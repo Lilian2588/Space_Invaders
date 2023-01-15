@@ -81,7 +81,7 @@ PosY = 370
 
 Canevas.focus_set()
 #Création des protéctions
-Protection = Protections(Canevas.width,3,PosY-35,5)
+Protection = Protections(LARGEUR,3,PosY-35,5)
 affich_protection = Protection.affichage(Canevas) 
 #Création de l'entité du vaisseau et affichage de sa forme 
 Vaisseau = vaisseau(vitesse, PosX, PosY, 3, 'oval')
