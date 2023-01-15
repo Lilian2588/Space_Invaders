@@ -5,6 +5,7 @@ pos = 0
 class Protections:
     def __init__(self,width,nbre_protections,posYprotections,resistance):
         Protections.pos += 1
+        self.pos = Protections.pos
         self.x = width*self.pos/(nbre_protections+1)
         Protections.y = posYprotections
         self.Resistance = resistance
